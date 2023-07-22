@@ -25,7 +25,7 @@ def _init_aria2():
     if aria2:
         return
     port = get_available_port()
-    send_notify(f'starting aria2 daemon at port {port}')
+    send_notify(f'启动 aria2c 下载器，端口 {port}')
     logger.info(f'starting aria2 daemon at port {port}')
     if config.setting.download.removeOldAria2LogFile and os.path.exists('aria2.log'):
         try:
@@ -99,8 +99,6 @@ def download(url, name, save_dir=None, options=None, download_in_background=Fals
 
 def _download(url, name, save_dir=None, options=None, download_in_background=False):
     init_aria2()
-    send_notify('如果遇到下载失败或卡住的问题, 可以尝试在设置中换个下载源, 如果还是不行就挂个梯子')
-    send_notify('如果你的网络支持 IPv6, 也可以尝试在设置中允许 aria2 使用 IPv6, 看看能不能解决问题')
     tmp = init_download_options_with_proxy(url)
     tmp['auto-file-renaming'] = 'false'
     tmp['allow-overwrite'] = 'false'
@@ -116,7 +114,9 @@ def _download(url, name, save_dir=None, options=None, download_in_background=Fal
         return info
     info = aria2.get_download(info.gid)
     retry_count = 0
-    send_notify(f'正在下载 {name}...')
+    send_notify(f'正在下载 {name} 文件...')
+    send_notify('PS1：如果遇到下载失败或卡住的问题, 可以尝试在设置中换个下载源, 如果还是不行就挂个梯子')
+    send_notify('PS2：如果你的网络支持 IPv6, 也可以尝试在设置中允许 aria2 使用 IPv6, 看看能不能解决问题')
     while info.is_active:
         print(f'\rprogress: {info.progress_string()}, '
                     f'connections: {info.connections}, '

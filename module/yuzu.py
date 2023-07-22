@@ -27,7 +27,7 @@ def download_yuzu(target_version, branch):
     logger.info(f'target yuzu version: {target_version}')
     yuzu_path = Path(config.yuzu.yuzu_path)
     logger.info(f'target yuzu path: {yuzu_path}')
-    send_notify('开始下载 yuzu...')
+    send_notify('开始下载 yuzu 文件...')
     assets = release_info['assets']
     url = None
     for asset in assets:
@@ -50,7 +50,7 @@ def unzip_yuzu(package_path: Path):
     send_notify('正在解压 yuzu 文件...')
     from utils.package import uncompress
     target_dir = tempfile.gettempdir()
-    uncompress(package_path, target_dir)
+    uncompress(package_path, target_dir, 'yuzu')
     return target_dir
 
 

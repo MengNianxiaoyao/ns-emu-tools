@@ -38,7 +38,7 @@ def download_cfst():
     with zipfile.ZipFile(filepath, 'r') as zf:
         zf.extractall('CloudflareSpeedTest')
     os.remove(filepath)
-    send_notify('解压完成')
+    send_notify('解压 CloudflareSpeedTest 完成')
     with version_file.open('w') as f:
         f.write(target_cfst_version)
 

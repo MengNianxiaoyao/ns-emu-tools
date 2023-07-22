@@ -11,7 +11,7 @@ import os
 logger = logging.getLogger(__name__)
 
 
-def uncompress(filepath: Path, target_path, delete_on_error=True,
+def uncompress(filepath: Path, target_path, name, delete_on_error=True,
                exception_msg='当前下载的文件看起来不太正常，请重新下载试试'):
     if isinstance(target_path, str):
         target_path = Path(target_path)
@@ -20,16 +20,16 @@ def uncompress(filepath: Path, target_path, delete_on_error=True,
             import zipfile
             with zipfile.ZipFile(filepath, 'r') as zf:
                 zf.extractall(str(target_path.absolute()))
-            send_notify('解压完成')
+            send_notify(f'解压 {name} 完成')
         elif filepath.name.lower().endswith(".7z"):
             import py7zr
             with py7zr.SevenZipFile(filepath) as zf:
                 zf.extractall(str(target_path.absolute()))
-            send_notify('解压完成')
+            send_notify(f'解压 {name} 完成')
     except Exception as e:
         logger.error(f'Fail to uncompress file: {filepath}', exc_info=True)
         if delete_on_error:
-            send_notify(f'文件解压失败，正在删除异常的文件 [{filepath}]')
+            send_notify(f' {name} 文件解压失败，正在删除异常的文件 [{filepath}]')
             os.remove(filepath)
         raise IgnoredException(exception_msg)
 
