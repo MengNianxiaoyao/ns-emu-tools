@@ -59,7 +59,7 @@ def install_ryujinx_by_version(target_version: str, branch: str):
     ryujinx_path.mkdir(parents=True, exist_ok=True)
     download_url = get_github_download_url(download_url)
     logger.info(f'download ryujinx from url: {download_url}')
-    send_notify(f'开始下载 ryujinx ...')
+    send_notify(f'开始下载 ryujinx 文件...')
     info = download(download_url, 'ryujinx')
     file = info.files[0]
     from utils.package import uncompress
@@ -67,7 +67,7 @@ def install_ryujinx_by_version(target_version: str, branch: str):
     tmp_dir = Path(tempfile.gettempdir()).joinpath('ryujinx-install')
     logger.info(f'Unpacking ryujinx files to {tmp_dir}.')
     send_notify('正在解压 ryujinx 文件...')
-    uncompress(file.path, tmp_dir)
+    uncompress(file.path, tmp_dir, 'ryujinx')
     clear_ryujinx_folder(ryujinx_path)
     ryujinx_tmp_dir = tmp_dir.joinpath('publish')
     logger.info(f'Copy back ryujinx files...')

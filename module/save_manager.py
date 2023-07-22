@@ -136,7 +136,7 @@ def restore_yuzu_save_from_backup(user_folder_name: str, backup_path: str):
     shutil.rmtree(target_game_save_path, ignore_errors=True)
     logger.info(f'uncompress to {str(target_game_save_path)}')
     send_notify(f'正在解压备份至 {str(user_save_path)}')
-    uncompress(backup_path, user_save_path, False, '备份')
+    uncompress(backup_path, user_save_path, '备份', False, '备份')
     logger.info(f'{str(backup_path)} restore done.')
     send_notify(f'{backup_path.name} 还原完成')
 
