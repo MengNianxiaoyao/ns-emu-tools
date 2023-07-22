@@ -160,7 +160,7 @@ def install_firmware(firmware_version, target_firmware_path):
         send_notify(f'Target firmware version [{firmware_version}] not found, skip install.')
         return
     url = get_finial_url(target_info['url'])
-    send_notify(f'开始下载固件...')
+    send_notify(f'开始下载 固件 文件...')
     logger.info(f"downloading firmware of [{firmware_version}] from {url}")
     info = download(url, '固件')
     file = info.files[0]
