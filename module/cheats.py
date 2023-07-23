@@ -22,9 +22,7 @@ cheat_name_re = re.compile(r'\{.*?}')
 def get_game_data():
     res = {}
     try:
-        resp = get_durable_cache_session().get(
-            'https://ghproxy.net/https://raw.githubusercontent.com/triwinds/ns-emu-tools/main/game_data.json',
-            timeout=5)
+        resp = 'https://cdn.jsdelivr.net/gh/triwinds/ns-emu-tools/game_data.json'
         return resp.json()
     except Exception as e:
         logger.warning(f'fail to load game data, ex: {e}')
