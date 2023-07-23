@@ -14,8 +14,8 @@ logger = logging.getLogger(__name__)
 url_override_map = {
     'https://archive.org/download/nintendo-switch-global-firmwares/': 'https://nsarchive.e6ex.com/nsfrp/',
     'https://api.github.com': 'https://cfrp.e6ex.com/ghapi',
-    # 'https://aka.ms/vs': 'https://nsarchive.e6ex.com/msvc'
     'https://raw.githubusercontent.com': 'https://www.githubs.cn/raw-githubusercontent',
+    # 'https://aka.ms/vs': 'https://nsarchive.e6ex.com/msvc'
 }
 
 
@@ -26,20 +26,15 @@ github_us_mirrors = [
     ['https://gh.gh2233.ml/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [@X.I.U/XIU2] 提供'],
     ['https://gh.ddlc.top/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [@mtr-static-official] 提供'],
     ['https://ghdl.feizhuqwq.cf/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [feizhuqwq.com] 提供'],
-    # ['https://gh.flyinbug.top/gh/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [Mintimate] 提供'],
-    # ['https://proxy.zyun.vip/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [知了小站] 提供'],
-    # ['https://cors.isteed.cc/github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [Lufs\'s] 提供'],
     ['https://hub.gitmirror.com/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [GitMirror] 提供'],
     ['https://js.xxooo.ml/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [饭太硬] 提供'],
     ['https://download.nuaa.cf', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [LibraryCloud] 提供']
 ]
 
 github_other_mirrors = [
-    # ['https://download.fastgit.org', '德国', '[德国] - 该公益加速源由 [FastGit] 提供'],
     ['https://ghproxy.net/https://github.com', '韩国',
-     '[韩国 首尔] - 该公益加速源由 [ghproxy] 提供，有日本、韩国、德国、巴西等地区的服务器，不过国内一般分配为韩国'],
-    ['https://ghproxy.com/https://github.com', '韩国',
-     '[韩国 首尔] - 该公益加速源由 [ghproxy] 提供，有日本、韩国、德国、巴西等地区的服务器，不过国内一般分配为韩国'],
+     '[韩国 首尔] - 该公益加速源由 [ghproxy.net] 提供，有日本、韩国、德国、巴西等地区的服务器，不过国内一般分配为韩国'],
+    ['https://ghproxy.com/https://github.com', '香港', '[中国 香港] - 该公益加速源由 [ghproxy.com] 提供'],
     ['https://kgithub.com', '新加坡', '[新加坡] - 该公益加速源由 [KGitHub] 提供']
 ]
 
