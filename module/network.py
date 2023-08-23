@@ -23,17 +23,20 @@ github_us_mirrors = [
     ['https://nsarchive.e6ex.com/gh', '美国', '[美国 Cloudflare CDN] - 自建代理服务器'],
 
     # https://github.com/XIU2/UserScript/blob/master/GithubEnhanced-High-Speed-Download.user.js
-    ['https://gh.gh2233.ml/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [@X.I.U/XIU2] 提供'],
+    ['https://gh.h233.eu.org/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [@X.I.U/XIU2] 提供'],
     ['https://gh.ddlc.top/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [@mtr-static-official] 提供'],
-    ['https://ghdl.feizhuqwq.cf/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [feizhuqwq.com] 提供'],
+    ['https://slink.ltd/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [知了小站] 提供'],
+    ['https://git.xfj0.cn/https://github.com', '美国', '[美国 Cloudflare CDN] - git.xfj0.cn'],
+    ['https://gh.con.sh/https://github.com', '美国', '[美国 Cloudflare CDN] - gh.con.sh'],
+    ['https://ghps.cc/https://github.com', '美国', '[美国 Cloudflare CDN] - ghps.cc'],
     ['https://hub.gitmirror.com/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [GitMirror] 提供'],
-    ['https://js.xxooo.ml/https://github.com', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [饭太硬] 提供'],
+    ['https://download.njuu.cf', '美国', '[美国 拉斯维加斯] - 该公益加速源由 [LibraryCloud] 提供'],
+    ['https://download.yzuu.cf', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [LibraryCloud] 提供'],
     ['https://download.nuaa.cf', '美国', '[美国 Cloudflare CDN] - 该公益加速源由 [LibraryCloud] 提供']
 ]
 
 github_other_mirrors = [
-    ['https://ghproxy.net/https://github.com', '韩国',
-     '[韩国 首尔] - 该公益加速源由 [ghproxy.net] 提供，有日本、韩国、德国、巴西等地区的服务器，不过国内一般分配为韩国'],
+    ['https://ghproxy.net/https://github.com', '韩国', '[韩国 首尔] - 该公益加速源由 [ghproxy.net] 提供，有日本、韩国、德国、巴西等地区的服务器，不过国内一般分配为韩国'],
     ['https://ghproxy.com/https://github.com', '香港', '[中国 香港] - 该公益加速源由 [ghproxy.com] 提供'],
     ['https://kgithub.com', '新加坡', '[新加坡] - 该公益加速源由 [KGitHub] 提供']
 ]
@@ -58,7 +61,7 @@ def get_durable_cache_session():
     if not _durable_cache_session:
         _durable_cache_session = requests_cache.CachedSession(cache_control=True)
         _durable_cache_session.headers.update({'User-Agent': user_agent})
-        _durable_cache_session.mount('https://ghproxy.net', HTTPAdapter(max_retries=5))
+        _durable_cache_session.mount('https://ghproxy.com', HTTPAdapter(max_retries=5))
         _durable_cache_session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
         origin_get = _durable_cache_session.get
 
@@ -261,7 +264,9 @@ def test_github_us_mirrors():
             print('failed')
             print(e)
             invalid_mirrors.append(mirror[2])
-    print(f'invalid_mirrors: {invalid_mirrors}')
+    from pprint import pp
+    print('====================================')
+    pp(invalid_mirrors)
 
 
 if __name__ == '__main__':
