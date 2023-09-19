@@ -224,7 +224,7 @@ let displayBranch = computed(() => {
   if (branch.value === 'ea') {
     return 'EA'
   } else if (branch.value === 'mainline') {
-    return '主线'
+    return '稳定'
   }
   return '未知'
 })
