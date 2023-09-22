@@ -178,7 +178,7 @@ def _download(url, name, save_dir=None, options=None, download_in_background=Fal
         logger.info(f'progress: {info.progress_string()}, total size: {info.total_length_string()}')
     if not info.is_complete:
         raise DownloadNotCompleted(info.name, info.status)
-    send_notify(f'下载 {name} 完成')
+    send_notify(f'下载 {name} 文件完成')
     aria2.purge()
     return info
 
