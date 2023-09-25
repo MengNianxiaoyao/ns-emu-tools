@@ -22,7 +22,7 @@ cheat_name_re = re.compile(r'\{.*?}')
 def get_game_data():
     res = {}
     try:
-        resp = 'https://cdn.staticaly.com/gh/triwinds/ns-emu-tools@main/game_data.json'
+        resp = 'https://fastly.jsdelivr.net/gh/triwinds/ns-emu-tools@main/game_data.json'
         return resp.json()
     except Exception as e:
         logger.warning(f'fail to load game data, ex: {e}')
