@@ -62,7 +62,6 @@ class RyujinxConfig:
 class NetworkSetting:
     firmwareDownloadSource: Optional[str] = 'github'
     githubApiMode: Optional[str] = 'direct'
-    githubApiUrl: Optional[str] = 'https://api.github.com'
     githubDownloadMirror: Optional[str] = 'cloudflare_load_balance'
     useDoh: Optional[bool] = True
     proxy: Optional[str] = 'system'
