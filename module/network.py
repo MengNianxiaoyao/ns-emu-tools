@@ -187,12 +187,15 @@ def get_finial_url_with_mode(origin_url: str, mode: str):
         return origin_url
     elif mode == 'cdn':
         return get_override_url(origin_url)
-    else:
+    elif mode == 'auto-detect':
         if is_using_proxy():
             logger.info(f'using origin url: {origin_url}')
             return origin_url
         else:
             return get_override_url(origin_url)
+    else:
+        new_url = origin_url.replace('https://api.github.com', config.setting.network.githubApiMode)
+        return new_url
 
 
 def get_override_url(origin_url):
