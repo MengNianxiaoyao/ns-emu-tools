@@ -241,9 +241,7 @@ def request_github_api(url: str):
             send_notify(f'直连 GitHub api 时出现异常, 尝试转用 CDN')
             send_notify(f'如果在多次使用中看到这个提示，可以直接在设置中将 GitHub api 设置为使用 cdn，以避免不必要的重试')
             github_api_fallback_flag = True
-    # url = get_override_url(url)
-    mirror = config.setting.network.githubApiUrl
-    url = url.replace('https://api.github.com', mirror)
+    url = get_override_url(url)
     return session.get(url).json()
 
 
