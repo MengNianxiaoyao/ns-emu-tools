@@ -188,7 +188,7 @@ def install_firmware(firmware_version, target_firmware_path):
     url = target_info['url']
     if 'github.com' in url:
         url = get_github_download_url(url)
-    send_notify(f'开始下载 固件 文件...')
+    send_notify(f'开始下载固件...')
     logger.info(f"downloading firmware of [{firmware_version}] from {url}")
     info = download(url, '固件')
     file = info.files[0]
