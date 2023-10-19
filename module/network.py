@@ -187,15 +187,12 @@ def get_finial_url_with_mode(origin_url: str, mode: str):
         return origin_url
     elif mode == 'cdn':
         return get_override_url(origin_url)
-    elif mode == 'auto-detect':
+    else:
         if is_using_proxy():
             logger.info(f'using origin url: {origin_url}')
             return origin_url
         else:
             return get_override_url(origin_url)
-    else:
-        new_url = origin_url.replace('https://api.github.com', config.setting.network.githubApiMode)
-        return new_url
 
 
 def get_override_url(origin_url):
@@ -227,7 +224,7 @@ def request_github_api(url: str):
     global github_api_fallback_flag
     logger.info(f'requesting github api: {url}')
     from module.msg_notifier import send_notify
-    if config.setting.network.githubApiMode != 'cdn' and not github_api_fallback_flag:
+    if (config.setting.network.githubApiMode == 'direct' or config.setting.network.githubApiMode == 'auto-detect') and not github_api_fallback_flag:
         try:
             resp = session.get(url, timeout=5)
             data = resp.json()
@@ -244,7 +241,10 @@ def request_github_api(url: str):
             send_notify(f'直连 GitHub api 时出现异常, 尝试转用 CDN')
             send_notify(f'如果在多次使用中看到这个提示，可以直接在设置中将 GitHub api 设置为使用 cdn，以避免不必要的重试')
             github_api_fallback_flag = True
-    url = get_override_url(url)
+    elif config.setting.network.githubApiMode == 'cdn':
+        url = get_override_url(url)
+    else:
+        url = url.replace('https://api.github.com', config.setting.network.githubApiMode)
     return session.get(url).json()
 
 
