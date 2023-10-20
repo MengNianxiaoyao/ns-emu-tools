@@ -74,5 +74,3 @@ win32-setctime==1.1.0 ; python_version >= "3.10" and python_version < "3.12" and
 xmltodict==0.13.0 ; python_version >= "3.10" and python_version < "3.12"
 zope-event==5.0 ; python_version >= "3.10" and python_version < "3.12"
 zope-interface==6.0 ; python_version >= "3.10" and python_version < "3.12"
-zope.event==5.0 ; python_version >= "3.10" and python_version < "3.12"
-zope.interface==6.0 ; python_version >= "3.10" and python_version < "3.12"
