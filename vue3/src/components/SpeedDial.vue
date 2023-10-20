@@ -14,7 +14,7 @@
         <v-btn
             color="grey-darken-3"
             :icon="mdiGithub"
-            @click="openUrlWithDefaultBrowser('https://github.com/triwinds/ns-emu-tools')"
+            @click="openUrlWithDefaultBrowser('https://github.com/MengNianxiaoyao/ns-emu-tools')"
         />
       </div>
       <div class="btn-item">

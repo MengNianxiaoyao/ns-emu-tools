@@ -24,7 +24,7 @@
           </template>
         </ChangeLogDialog>
         <v-btn color="success" variant="outlined" style="margin-left: 10px"
-               @click="openUrlWithDefaultBrowser('https://github.com/triwinds/ns-emu-tools/blob/main/LICENSE')">
+               @click="openUrlWithDefaultBrowser('https://github.com/MengNianxiaoyao/ns-emu-tools/blob/main/LICENSE')">
           License
         </v-btn>
       </v-card-text>
@@ -34,9 +34,9 @@
           <div class="line-group">
           <div class="line-item-icon"><v-icon size="24">{{ mdiGithub }}</v-icon></div>
           <div class="line-item">GitHub：<a class="text-error"
-                    @click="openUrlWithDefaultBrowser('https://github.com/triwinds/ns-emu-tools')">
+                    @click="openUrlWithDefaultBrowser('https://github.com/MengNianxiaoyao/ns-emu-tools')">
 
-          triwinds/ns-emu-tools</a></div>
+          MengNianxiaoyao/ns-emu-tools</a></div>
           </div>
           <span>如果您觉得这个软件好用, 可以在 GitHub 上点个 star</span><br>
           <span>这是对我最大的鼓励。</span>

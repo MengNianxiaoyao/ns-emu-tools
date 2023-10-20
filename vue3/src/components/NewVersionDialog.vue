@@ -97,7 +97,7 @@ function showNewVersionDialog(info: any) {
 function openReleasePage() {
   dialog.value = false
   if (configStore.hasNewVersion) {
-    openUrlWithDefaultBrowser('https://github.com/triwinds/ns-emu-tools/releases');
+    openUrlWithDefaultBrowser('https://github.com/MengNianxiaoyao/ns-emu-tools/releases');
   }
 }
 
