@@ -15,7 +15,7 @@ url_override_map = {
     'https://archive.org/download/nintendo-switch-global-firmwares/': 'https://nsarchive.e6ex.com/nsfrp/',
     'https://api.github.com': 'https://cfrp.e6ex.com/ghapi',
     # 'https://aka.ms/vs': 'https://nsarchive.e6ex.com/msvc'
-    'https://raw.githubusercontent.com': 'https://ghproxy.com/raw.githubusercontent.com/',
+    'https://raw.githubusercontent.com': 'https://mirror.ghproxy.com/raw.githubusercontent.com/',
 }
 
 
@@ -37,7 +37,7 @@ github_us_mirrors = [
 
 github_other_mirrors = [
     ['https://ghproxy.net/https://github.com', '韩国', '[韩国 首尔] - 该公益加速源由 [ghproxy.net] 提供，有日本、韩国、德国、巴西等地区的服务器，不过国内一般分配为韩国'],
-    ['https://ghproxy.com/https://github.com', '香港', '[中国 香港] - 该公益加速源由 [ghproxy.com] 提供'],
+    ['https://mirror.ghproxy.com/https://github.com', '香港', '[中国 香港] - 该公益加速源由 [ghproxy.com] 提供'],
     ['https://kgithub.com', '新加坡', '[新加坡] - 该公益加速源由 [KGitHub] 提供']
 ]
 
