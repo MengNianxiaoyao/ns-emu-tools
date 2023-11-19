@@ -21,9 +21,9 @@ PY3 = sys.version_info >= (3, 0)
 logger = logging.getLogger(__name__)
 
 # DNSPod https://doh.pub
-# DOH_SERVER = '120.53.53.53'
+DOH_SERVER = '120.53.53.53'
 # aliyun https://dns.alidns.com
-DOH_SERVER = '223.5.5.5'
+# DOH_SERVER = '223.5.5.5'
 # iQDNS https://iqiq.io/servers.html
 # DOH_SERVER = 'https://cn-east.iqiqzz.com/dns-query'
 doh_server_name = urlparse(DOH_SERVER).netloc or DOH_SERVER
@@ -31,7 +31,7 @@ session = httpx.Client()
 query_lock = RLock()
 
 resolver = dns.resolver.Resolver(configure=False)
-resolver.nameservers = ["223.5.5.5", '119.29.29.29']
+resolver.nameservers = ["119.29.29.29", "223.5.5.5"]
 
 
 try_ipv6 = connection.HAS_IPV6 and not config.setting.download.disableAria2Ipv6
