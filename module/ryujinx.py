@@ -55,6 +55,7 @@ def install_ryujinx_by_version(target_version: str, branch: str):
     if not download_url:
         send_notify(f'获取 ryujinx 下载链接失败')
         raise IgnoredException(f'No download url found with branch: {branch}, version: {target_version}')
+    send_notify('ryujinx 版本信息获取成功')
     ryujinx_path = Path(config.ryujinx.path)
     ryujinx_path.mkdir(parents=True, exist_ok=True)
     download_url = get_github_download_url(download_url)
@@ -86,7 +87,7 @@ def install_ryujinx_by_version(target_version: str, branch: str):
         os.remove(file.path)
     from module.common import check_and_install_msvc
     check_and_install_msvc()
-    return f'Ryujinx {branch} [{target_version}] 安装完成.'
+    return f'Ryujinx {branch} [{target_version}] 安装成功.'
 
 
 def install_firmware_to_ryujinx(firmware_version=None):

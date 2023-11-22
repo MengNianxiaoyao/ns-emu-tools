@@ -183,8 +183,9 @@ def install_firmware(firmware_version, target_firmware_path):
         target_info = firmware_map.get(firmware_version)
     if not target_info:
         logger.info(f'Target firmware version [{firmware_version}] not found, skip install.')
-        send_notify(f'Target firmware version [{firmware_version}] not found, skip install.')
+        send_notify(f'目标固件 [{firmware_version}] 版本未找到, 跳过安装.')
         return
+    send_notify(f'固件 信息获取成功')
     url = target_info['url']
     if 'github.com' in url:
         url = get_github_download_url(url)
