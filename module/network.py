@@ -15,7 +15,7 @@ url_override_map = {
     'https://archive.org/download/nintendo-switch-global-firmwares/': 'https://nsarchive.e6ex.com/nsfrp/',
     'https://api.github.com': 'https://cfrp.e6ex.com/ghapi',
     # 'https://aka.ms/vs': 'https://nsarchive.e6ex.com/msvc'
-    'https://raw.githubusercontent.com': 'https://ghproxy.net/raw.githubusercontent.com/',
+    'https://raw.githubusercontent.com': 'https://mirror.ghproxy.com/raw.githubusercontent.com',
 }
 
 
@@ -71,7 +71,7 @@ def get_durable_cache_session():
     if not _durable_cache_session:
         _durable_cache_session = requests_cache.CachedSession(cache_control=True)
         _durable_cache_session.headers.update({'User-Agent': user_agent})
-        _durable_cache_session.mount('https://ghproxy.net', HTTPAdapter(max_retries=5))
+        _durable_cache_session.mount('https://mirror.ghproxy.com', HTTPAdapter(max_retries=5))
         _durable_cache_session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
         origin_get = _durable_cache_session.get
 
