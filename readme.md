@@ -2,11 +2,11 @@
 
 一个用于安装/更新 NS 模拟器的工具
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/triwinds/ns-emu-tools?style=for-the-badge)
-![GitHub last commit](https://img.shields.io/github/last-commit/triwinds/ns-emu-tools?style=for-the-badge)
-![GitHub all releases](https://img.shields.io/github/downloads/triwinds/ns-emu-tools/total?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/triwinds/ns-emu-tools?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/triwinds/ns-emu-tools?style=for-the-badge)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/MengNianxiaoyao/ns-emu-tools?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/MengNianxiaoyao/ns-emu-tools?style=for-the-badge)
+![GitHub all releases](https://img.shields.io/github/downloads/MengNianxiaoyao/ns-emu-tools/total?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/MengNianxiaoyao/ns-emu-tools?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/MengNianxiaoyao/ns-emu-tools?style=for-the-badge)
 
 ## Features
 
@@ -25,10 +25,10 @@
 
 ### 一、使用预构建的版本运行
 
-从 [GitHub 发布页(稳定版本)](https://github.com/triwinds/ns-emu-tools/releases) 或 [CI 自动构建](https://github.com/triwinds/ns-emu-tools/actions/workflows/ci-build.yaml) 下载 exe 文件，然后双击运行即可。
+从 [GitHub 发布页(稳定版本)](https://github.com/MengNianxiaoyao/ns-emu-tools/releases) 或 [CI 自动构建](https://github.com/MengNianxiaoyao/ns-emu-tools/actions/workflows/ci-build.yaml) 下载 exe 文件，然后双击运行即可。
 <details>
   <summary>NsEmuTools.exe 和 NsEmuTools-console.exe 有什么区别？</summary>
-  NsEmuTools.exe 和 NsEmuTools-console.exe 在实际的功能上并没有任何差异，其主要的差别在于 console 会在启动的时候多一个命令行窗口，这也许可以解决某些杀毒软件的误报问题，详情见 <a href="https://github.com/triwinds/ns-emu-tools/issues/2">#2</a>.
+  NsEmuTools.exe 和 NsEmuTools-console.exe 在实际的功能上并没有任何差异，其主要的差别在于 console 会在启动的时候多一个命令行窗口，这也许可以解决某些杀毒软件的误报问题，详情见 <a href="https://github.com/MengNianxiaoyao/ns-emu-tools/issues/2">#2</a>.
 </details>
 
 ### 二、使用源码运行
@@ -41,7 +41,7 @@ Telegram: [Telegram 讨论组](https://t.me/+mxI34BRClLUwZDcx)
 
 ## License
 
-本项目的发布受 [AGPL-3.0](https://github.com/triwinds/ns-emu-tools/blob/main/LICENSE) 许可认证。
+本项目的发布受 [AGPL-3.0](https://github.com/MengNianxiaoyao/ns-emu-tools/blob/main/LICENSE) 许可认证。
 
 ## 启动参数
 

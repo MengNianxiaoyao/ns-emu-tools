@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "ns-emu-tools"
-version = "0.4.3"
+version = "0.4.5"
 description = ""
-authors = ["triwinds <triwinds@users.noreply.github.com>"]
+authors = ["MengNianxiaoyao <MengNianxiaoyao@users.noreply.github.com>"]
 readme = "README.md"
 packages = [{include = "ns_emu_tools"}]
 
