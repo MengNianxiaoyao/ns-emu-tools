@@ -18,7 +18,7 @@ def check_and_install_msvc():
     logger.info('downloading msvc installer...')
     download_info = download(get_finial_url('https://aka.ms/vs/17/release/VC_redist.x64.exe'))
     install_file = download_info.files[0]
-    send_notify('安装 msvc...')
+    send_notify('正在安装 msvc...')
     logger.info('install msvc...')
     process = subprocess.Popen([install_file.path])
     # process.wait()

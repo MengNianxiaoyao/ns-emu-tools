@@ -80,7 +80,7 @@ def copy_back_yuzu_files(tmp_dir: Path, yuzu_path: Path, ):
     for useless_file in tmp_dir.glob('yuzu-windows-msvc-source-*.tar.xz'):
         os.remove(useless_file)
     logger.info(f'Copy back yuzu files...')
-    send_notify('安装 yuzu 文件至目录...')
+    send_notify('正在安装 yuzu 文件至目录...')
     try:
         shutil.copytree(tmp_dir, yuzu_path, dirs_exist_ok=True)
         time.sleep(0.5)

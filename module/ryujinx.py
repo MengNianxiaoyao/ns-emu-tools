@@ -72,7 +72,7 @@ def install_ryujinx_by_version(target_version: str, branch: str):
     clear_ryujinx_folder(ryujinx_path)
     ryujinx_tmp_dir = tmp_dir.joinpath('publish')
     logger.info(f'Copy back ryujinx files...')
-    send_notify('安装 ryujinx 文件至目录...')
+    send_notify('正在安装 ryujinx 文件至目录...')
     try:
         shutil.copytree(ryujinx_tmp_dir, ryujinx_path, dirs_exist_ok=True)
     except Exception as e:
