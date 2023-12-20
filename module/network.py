@@ -58,6 +58,7 @@ if config.setting.network.useDoh:
 session = requests_cache.CachedSession(cache_control=True, backend='memory')
 session.headers.update({'User-Agent': user_agent})
 session.mount('https://cfrp.e6ex.com', HTTPAdapter(max_retries=5))
+session.mount('https://ghproxy.mengnian.eu.org', HTTPAdapter(max_retries=5))
 session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
 session.mount('https://api.github.com', HTTPAdapter(max_retries=5))
 
@@ -195,8 +196,11 @@ def get_finial_url_with_mode(origin_url: str, mode: str):
     if mode == 'direct':
         logger.info(f'using origin url: {origin_url}')
         return origin_url
-    elif mode == 'cdn':
+    elif mode == 'cdn1':
         return get_override_url(origin_url)
+    elif mode == 'cdn2':
+        new_url = origin_url.replace('https://api.github.com', 'https://ghproxy.mengnian.eu.org')
+        return new_url
     else:
         if is_using_proxy():
             logger.info(f'using origin url: {origin_url}')

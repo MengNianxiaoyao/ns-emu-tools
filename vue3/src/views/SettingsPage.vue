@@ -115,7 +115,8 @@ onBeforeMount(async () => {
 })
 let availableNetworkMode = [
   {name: '根据系统代理自动决定', value: 'auto-detect'},
-  {name: '[美国 Cloudflare CDN] - 自建代理服务器', value: 'cdn'},
+  {name: '[美国 Cloudflare CDN1] - 自建代理服务器', value: 'cdn1'},
+  {name: '[美国 Cloudflare CDN2] - 自建代理服务器', value: 'cdn2'},
   {name: '直连', value: 'direct'},
 ]
 let availableFirmwareDownloadSource = ref<NameValueItem[]>([])
