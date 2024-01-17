@@ -62,6 +62,7 @@ _durable_cache_session = requests_cache.CachedSession(cache_control=True)
 def init_session():
     session.headers.update({'User-Agent': user_agent})
     session.mount('https://cfrp.e6ex.com', HTTPAdapter(max_retries=5))
+    session.mount('https://ghproxy.mengnian.eu.org', HTTPAdapter(max_retries=5))
     session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
     session.mount('https://api.github.com', HTTPAdapter(max_retries=5))
     _durable_cache_session.headers.update({'User-Agent': user_agent})
