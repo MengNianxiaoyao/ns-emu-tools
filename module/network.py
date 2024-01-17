@@ -56,34 +56,36 @@ if config.setting.network.useDoh:
     install_doh()
 
 session = requests_cache.CachedSession(cache_control=True, backend='memory')
-session.headers.update({'User-Agent': user_agent})
-session.mount('https://cfrp.e6ex.com', HTTPAdapter(max_retries=5))
-session.mount('https://ghproxy.mengnian.eu.org', HTTPAdapter(max_retries=5))
-session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
-session.mount('https://api.github.com', HTTPAdapter(max_retries=5))
+_durable_cache_session = requests_cache.CachedSession(cache_control=True)
 
 
-_durable_cache_session = None
+def init_session():
+    session.headers.update({'User-Agent': user_agent})
+    session.mount('https://cfrp.e6ex.com', HTTPAdapter(max_retries=5))
+    session.mount('https://ghproxy.mengnian.eu.org', HTTPAdapter(max_retries=5))
+    session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
+    session.mount('https://api.github.com', HTTPAdapter(max_retries=5))
+    _durable_cache_session.headers.update({'User-Agent': user_agent})
+    _durable_cache_session.mount('https://mirror.ghproxy.com', HTTPAdapter(max_retries=5))
+    _durable_cache_session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
+    origin_get = _durable_cache_session.get
+
+    def sync_get(url: str, params=None, **kwargs):
+        request_lock.acquire()
+        try:
+            return origin_get(url, params, **kwargs)
+        finally:
+            request_lock.release()
+
+    _durable_cache_session.get = sync_get
+    session.proxies.update(get_proxies())
+    _durable_cache_session.proxies.update(get_proxies())
+
+
 request_lock = RLock()
 
 
 def get_durable_cache_session():
-    global _durable_cache_session
-    if not _durable_cache_session:
-        _durable_cache_session = requests_cache.CachedSession(cache_control=True)
-        _durable_cache_session.headers.update({'User-Agent': user_agent})
-        _durable_cache_session.mount('https://mirror.ghproxy.com', HTTPAdapter(max_retries=5))
-        _durable_cache_session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
-        origin_get = _durable_cache_session.get
-
-        def sync_get(url: str, params=None, **kwargs):
-            request_lock.acquire()
-            try:
-                return origin_get(url, params, **kwargs)
-            finally:
-                request_lock.release()
-
-        _durable_cache_session.get = sync_get
     return _durable_cache_session
 
 
@@ -107,7 +109,7 @@ github_api_fallback_flag = False
 def is_using_proxy():
     proxies = get_proxies()
     logger.info(f'current proxies: {proxies}')
-    return proxies is not None and proxies != {}
+    return proxies and proxies.get('https')
 
 
 def uri_validator(x):
@@ -123,7 +125,7 @@ def get_proxies():
     if proxy == 'system':
         return get_system_proxies()
     elif proxy is None or proxy.strip() == '':
-        return {}
+        return {'http': '', 'https': ''}
     elif uri_validator(proxy):
         return {'http': proxy, 'https': proxy}
     else:
@@ -139,6 +141,9 @@ def get_system_proxies():
     if 'no' in proxies:
         del proxies['no']
     return proxies
+
+
+init_session()
 
 
 def get_global_options():
