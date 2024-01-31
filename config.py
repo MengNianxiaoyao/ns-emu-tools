@@ -90,8 +90,8 @@ class UiSetting:
 
 @dataclass_json
 @dataclass
-class CloudflareSpeedTestSetting:
-    override_hostnames: Optional[str] = 'nsarchive.e6ex.com'
+class OtherSetting:
+    rename_yuzu_to_cemu: Optional[bool] = False
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -100,7 +100,7 @@ class CommonSetting:
     ui: UiSetting = field(default_factory=UiSetting)
     network: NetworkSetting = field(default_factory=NetworkSetting)
     download: DownloadSetting = field(default_factory=DownloadSetting)
-    cfst: CloudflareSpeedTestSetting = field(default_factory=CloudflareSpeedTestSetting)
+    other: OtherSetting = field(default_factory=OtherSetting)
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
