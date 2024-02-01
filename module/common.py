@@ -19,7 +19,7 @@ def check_and_install_msvc():
     from module.downloader import download
     send_notify('开始下载 msvc 安装包...')
     logger.info('downloading msvc installer...')
-    download_info = download(get_finial_url('https://aka.ms/vs/17/release/VC_redist.x64.exe'))
+    download_info = download(get_finial_url('https://aka.ms/vs/17/release/VC_redist.x64.exe'), 'msvc')
     install_file = download_info.files[0]
     send_notify('正在安装 msvc...')
     logger.info('install msvc...')

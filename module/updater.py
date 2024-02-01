@@ -72,7 +72,7 @@ def download_net_by_tag(tag: str):
     logger.info(f'target_file_name: {target_file_name}')
     logger.info(f'start download {target_file_name}, version: [{tag}]')
     send_notify(f'开始下载 {target_file_name}, 版本: [{tag}]')
-    info = download(get_github_download_url(target_asset['browser_download_url']), options={'allow-overwrite': 'true'})
+    info = download(get_github_download_url(target_asset['browser_download_url']), 'NsEmuTools', options={'allow-overwrite': 'true'})
     filepath = info.files[0].path.absolute()
     logger.info(f'{target_file_name} of [{tag}] downloaded to {filepath}')
     send_notify(f'{target_file_name} 版本: [{tag}] 已下载至')
