@@ -107,9 +107,9 @@ def install_yuzu(target_version, branch='ea'):
     config.yuzu.yuzu_version = target_version
     config.yuzu.branch = branch
     dump_config()
+    send_notify(f'yuzu {branch} [{target_version}] 安装成功.')
     from module.common import check_and_install_msvc
     check_and_install_msvc()
-    send_notify(f'yuzu {branch} [{target_version}] 安装成功.')
 
 
 def install_firmware_to_yuzu(firmware_version=None):

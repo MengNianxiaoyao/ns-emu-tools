@@ -85,9 +85,9 @@ def install_ryujinx_by_version(target_version: str, branch: str):
     logger.info(f'Ryujinx {branch} of [{target_version}] install successfully.')
     if config.setting.download.autoDeleteAfterInstall:
         os.remove(file.path)
+    send_notify(f'Ryujinx {branch} [{target_version}] 安装成功.')
     from module.common import check_and_install_msvc
     check_and_install_msvc()
-    return f'Ryujinx {branch} [{target_version}] 安装成功.'
 
 
 def install_firmware_to_ryujinx(firmware_version=None):
