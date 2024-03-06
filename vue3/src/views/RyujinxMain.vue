@@ -205,10 +205,10 @@ let firmwareWarningMsg = ref(`一般来说，更新固件并不会改善你的�
 let firmwareInstallationWarningDialog = ref(false)
 let availableBranch = ref([
   {
-    text: '正式版 (老 UI)',
+    text: '正式版',
     value: 'mainline'
   }, {
-    text: 'AVA 版 (新 UI)',
+    text: 'AVA 版 (1.1.1217 后已经合并入正式版)',
     value: 'ava'
   }, {
     text: 'LDN 版 (联机版本)',
@@ -262,6 +262,7 @@ async function updateRyujinxPath() {
   let oldBranch = configStore.config.ryujinx.branch
   await configStore.reloadConfig()
   selectedRyujinxPath.value = configStore.config.ryujinx.path
+  selectedBranch.value = configStore.config.ryujinx.branch
   await loadHistoryPathList()
   if (oldBranch !== configStore.config.ryujinx.branch) {
     updateRyujinxReleaseInfos()
@@ -276,17 +277,17 @@ function deleteHistoryPath(targetPath: string) {
   })
 }
 
-function detectRyujinxVersion() {
+async function detectRyujinxVersion() {
   cds.cleanAndShowConsoleDialog()
-  window.eel.detect_ryujinx_version()((data: CommonResponse) => {
-    if (data['code'] === 0) {
-      configStore.reloadConfig()
-      updateRyujinxReleaseInfos()
-      cds.appendConsoleMessage('Ryujinx 版本检测完成')
-    } else {
-      cds.appendConsoleMessage('检测 Ryujinx 版本时发生异常')
-    }
-  })
+  let data = await window.eel.detect_ryujinx_version()()
+  if (data['code'] === 0) {
+    await configStore.reloadConfig()
+    selectedBranch.value = configStore.config.ryujinx.branch
+    updateRyujinxReleaseInfos()
+    cds.appendConsoleMessage('Ryujinx 版本检测完成')
+  } else {
+    cds.appendConsoleMessage('检测 Ryujinx 版本时发生异常')
+  }
 }
 
 function installRyujinx() {

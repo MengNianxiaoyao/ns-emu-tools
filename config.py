@@ -8,7 +8,7 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 
-current_version = '0.4.6'
+current_version = '0.4.7'
 user_agent = f'ns-emu-tools/{current_version}'
 
 
@@ -56,7 +56,7 @@ class RyujinxConfig:
     path: Optional[str] = 'D:\\Ryujinx'
     version: Optional[str] = None
     firmware: Optional[str] = None
-    branch: Optional[str] = 'ava'
+    branch: Optional[str] = 'mainline'
 
 
 @dataclass_json
@@ -81,7 +81,7 @@ class DownloadSetting:
 @dataclass_json
 @dataclass
 class UiSetting:
-    lastOpenEmuPage: Optional[str] = 'yuzu'
+    lastOpenEmuPage: Optional[str] = 'ryujinx'
     dark: Optional[bool] = True
     mode: Optional[str] = 'auto'
     width: int = 1300
@@ -118,6 +118,7 @@ if os.path.exists(config_path):
         config.ryujinx.path = str(Path(config.ryujinx.path).absolute())
 if not config:
     config = Config()
+config.yuzu.branch = 'ea'
 
 
 def dump_config():
