@@ -59,6 +59,7 @@ def init_session():
     session.mount('https://api.github.com', HTTPAdapter(max_retries=5))
     _durable_cache_session.headers.update({'User-Agent': user_agent})
     _durable_cache_session.mount('https://mirror.ghproxy.com', HTTPAdapter(max_retries=5))
+    _durable_cache_session.mount('https://jsd.onmicrosoft.cn', HTTPAdapter(max_retries=5))
     _durable_cache_session.mount('https://nsarchive.e6ex.com', HTTPAdapter(max_retries=5))
     origin_get = _durable_cache_session.get
 
