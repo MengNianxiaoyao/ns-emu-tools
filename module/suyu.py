@@ -32,12 +32,12 @@ def download_suyu_release(tag_name, release_info):
     if not target_asset:
         send_notify(f'未找到 Suyu [{tag_name}] 对应的 Windows 安装包')
         raise IgnoredException(f'No windows package found for tag {tag_name}')
-    return download(get_finial_url(target_asset['browser_download_url'])).files[0].path
+    return download(get_finial_url(target_asset['browser_download_url']), 'suyu').files[0].path
 
 
 def copy_back_suyu_files(tmp_dir: Path, suyu_path: Path):
     logger.info(f'Copy back suyu files...')
-    send_notify('安装 suyu 文件至目录...')
+    send_notify('正在安装 suyu 文件至目录...')
     try:
         shutil.copytree(tmp_dir, suyu_path, dirs_exist_ok=True)
         time.sleep(0.5)
@@ -55,12 +55,12 @@ def install_suyu_release(tag_name):
     tmp_dir = Path(tempfile.gettempdir()).joinpath(uuid.uuid4().hex)
     logger.info(f'Unpacking suyu files...')
     send_notify('正在解压 suyu 文件...')
-    uncompress(zip_file, tmp_dir)
+    uncompress(zip_file, tmp_dir , 'suyu')
     copy_back_suyu_files(tmp_dir.joinpath('Release'), config.suyu.path)
     if config.setting.download.autoDeleteAfterInstall:
         os.remove(zip_file)
     logger.info(f'Suyu [{tag_name}] installation finished.')
-    send_notify(f'Suyu [{tag_name}] 安装完成.')
+    send_notify(f'Suyu [{tag_name}] 安装成功.')
     from module.common import check_and_install_msvc
     check_and_install_msvc()
 
