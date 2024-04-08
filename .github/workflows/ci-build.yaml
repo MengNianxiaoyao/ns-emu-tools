@@ -17,20 +17,20 @@ jobs:
         os: ['windows-latest']
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
       with:
         python-version: '3.11'
-    - uses: actions/setup-node@v3
+    - uses: actions/setup-node@v4
       with:
         node-version: 18
     - name: Run yarn install
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         dir: vue3
         cmd: install
     - name: Run yarn build
-      uses: borales/actions-yarn@v4
+      uses: borales/actions-yarn@v5
       with:
         dir: vue3
         cmd: build
@@ -39,20 +39,19 @@ jobs:
         poetry config installer.parallel false
         poetry config --list
         poetry install
-        poetry run pyinstaller --noconfirm --onefile --windowed --icon "./web/favicon.ico" --add-data "./module/*.exe;./module/" --add-data "./web;web/" --additional-hooks-dir=".\\hooks" "./main_devnull.py" --name "NsEmuTools"
-        poetry run pyinstaller --noconfirm --onefile --console --icon "./web/favicon.ico" --add-data "./module/*.exe;./module/" --add-data "./web;web/" --additional-hooks-dir=".\\hooks" "./main.py" --name "NsEmuTools-console"
+        .\package_all.bat
 #        pip install pywebview
 #        pyinstaller --noconfirm --onefile --console --icon "./web/favicon.ico" --add-data "./module/*.exe;./module/" --add-data "./web;web/" --additional-hooks-dir=".\\hooks" "./ui_webview.py" --name "NsEmuTools-webview"
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         path: dist/NsEmuTools.exe
         name: NsEmuTools
-    - uses: actions/upload-artifact@v3
+    - uses: actions/upload-artifact@v4
       with:
         path: dist/NsEmuTools-console.exe
         name: NsEmuTools-console
     - name: Release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v2
       if: startsWith(github.ref, 'refs/tags/')
       with:
         draft: false
