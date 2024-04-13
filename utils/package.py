@@ -26,6 +26,11 @@ def uncompress(filepath: Path, target_path, name, delete_on_error=True,
             with py7zr.SevenZipFile(filepath) as zf:
                 zf.extractall(str(target_path.absolute()))
             send_notify(f'解压 {name} 文件完成')
+        elif filepath.name.lower().endswith(".tar.xz"):
+            import tarfile
+            with tarfile.open(filepath, 'r') as tf:
+                tf.extractall(str(target_path.absolute()))
+            send_notify(f'解压 {name} 文件完成')
     except Exception as e:
         logger.error(f'Fail to uncompress file: {filepath}', exc_info=True)
         if delete_on_error:
